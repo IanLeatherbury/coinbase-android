@@ -1017,6 +1017,40 @@ namespace Com.Coinbase.Api.Entity {
 			}
 		}
 
+		static Delegate cb_getType;
+#pragma warning disable 0169
+		static Delegate GetGetReportTypeHandler ()
+		{
+			if (cb_getType == null)
+				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetReportType);
+			return cb_getType;
+		}
+
+		static IntPtr n_GetReportType (IntPtr jnienv, IntPtr native__this)
+		{
+			global::Com.Coinbase.Api.Entity.Report __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+			return JNIEnv.ToLocalJniHandle (__this.ReportType);
+		}
+#pragma warning restore 0169
+
+		static IntPtr id_getType;
+		public virtual unsafe global::Com.Coinbase.Api.Entity.Report.Type ReportType {
+			// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Report']/method[@name='getType' and count(parameter)=0]"
+			[Register ("getType", "()Lcom/coinbase/api/entity/Report$Type;", "GetGetReportTypeHandler")]
+			get {
+				if (id_getType == IntPtr.Zero)
+					id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Report$Type;");
+				try {
+
+					if (GetType () == ThresholdType)
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
+					else
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Report$Type;")), JniHandleOwnership.TransferLocalRef);
+				} finally {
+				}
+			}
+		}
+
 		static Delegate cb_getTimeRangeEnd;
 #pragma warning disable 0169
 		static Delegate GetGetTimeRangeEndHandler ()
@@ -1349,39 +1383,6 @@ namespace Com.Coinbase.Api.Entity {
 					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.TimeRange> (JNIEnv.CallObjectMethod  (Handle, id_getTimeRange), JniHandleOwnership.TransferLocalRef);
 				else
 					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.TimeRange> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getTimeRange", "()Lcom/coinbase/api/entity/Report$TimeRange;")), JniHandleOwnership.TransferLocalRef);
-			} finally {
-			}
-		}
-
-		static Delegate cb_getType;
-#pragma warning disable 0169
-		static Delegate GetGetTypeHandler ()
-		{
-			if (cb_getType == null)
-				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetType);
-			return cb_getType;
-		}
-
-		static IntPtr n_GetType (IntPtr jnienv, IntPtr native__this)
-		{
-			global::Com.Coinbase.Api.Entity.Report __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-			return JNIEnv.ToLocalJniHandle (__this.GetType ());
-		}
-#pragma warning restore 0169
-
-		static IntPtr id_getType;
-		// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Report']/method[@name='getType' and count(parameter)=0]"
-		[Register ("getType", "()Lcom/coinbase/api/entity/Report$Type;", "GetGetTypeHandler")]
-		public virtual unsafe global::Com.Coinbase.Api.Entity.Report.Type GetType ()
-		{
-			if (id_getType == IntPtr.Zero)
-				id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Report$Type;");
-			try {
-
-				if (GetType () == ThresholdType)
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
-				else
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Report.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Report$Type;")), JniHandleOwnership.TransferLocalRef);
 			} finally {
 			}
 		}

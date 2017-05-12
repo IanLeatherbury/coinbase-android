@@ -190,6 +190,40 @@ namespace Com.Coinbase.Api.Entity {
 			}
 		}
 
+		static Delegate cb_getType;
+#pragma warning disable 0169
+		static Delegate GetGetAcountTypeHandler ()
+		{
+			if (cb_getType == null)
+				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetAcountType);
+			return cb_getType;
+		}
+
+		static IntPtr n_GetAcountType (IntPtr jnienv, IntPtr native__this)
+		{
+			global::Com.Coinbase.Api.Entity.Account __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+			return JNIEnv.ToLocalJniHandle (__this.AcountType);
+		}
+#pragma warning restore 0169
+
+		static IntPtr id_getType;
+		public virtual unsafe global::Com.Coinbase.Api.Entity.Account.Type AcountType {
+			// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Account']/method[@name='getType' and count(parameter)=0]"
+			[Register ("getType", "()Lcom/coinbase/api/entity/Account$Type;", "GetGetAcountTypeHandler")]
+			get {
+				if (id_getType == IntPtr.Zero)
+					id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Account$Type;");
+				try {
+
+					if (GetType () == ThresholdType)
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
+					else
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Account$Type;")), JniHandleOwnership.TransferLocalRef);
+				} finally {
+				}
+			}
+		}
+
 		static Delegate cb_getId;
 #pragma warning disable 0169
 		static Delegate GetGetIdHandler ()
@@ -327,39 +361,6 @@ namespace Com.Coinbase.Api.Entity {
 				} finally {
 					JNIEnv.DeleteLocalRef (native_value);
 				}
-			}
-		}
-
-		static Delegate cb_getType;
-#pragma warning disable 0169
-		static Delegate GetGetTypeHandler ()
-		{
-			if (cb_getType == null)
-				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetType);
-			return cb_getType;
-		}
-
-		static IntPtr n_GetType (IntPtr jnienv, IntPtr native__this)
-		{
-			global::Com.Coinbase.Api.Entity.Account __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-			return JNIEnv.ToLocalJniHandle (__this.GetType ());
-		}
-#pragma warning restore 0169
-
-		static IntPtr id_getType;
-		// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Account']/method[@name='getType' and count(parameter)=0]"
-		[Register ("getType", "()Lcom/coinbase/api/entity/Account$Type;", "GetGetTypeHandler")]
-		public virtual unsafe global::Com.Coinbase.Api.Entity.Account.Type GetType ()
-		{
-			if (id_getType == IntPtr.Zero)
-				id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Account$Type;");
-			try {
-
-				if (GetType () == ThresholdType)
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
-				else
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Account.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Account$Type;")), JniHandleOwnership.TransferLocalRef);
-			} finally {
 			}
 		}
 

@@ -496,6 +496,40 @@ namespace Com.Coinbase.Api.Entity {
 			}
 		}
 
+		static Delegate cb_getType;
+#pragma warning disable 0169
+		static Delegate GetGetPaymentMethodTypeHandler ()
+		{
+			if (cb_getType == null)
+				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetPaymentMethodType);
+			return cb_getType;
+		}
+
+		static IntPtr n_GetPaymentMethodType (IntPtr jnienv, IntPtr native__this)
+		{
+			global::Com.Coinbase.Api.Entity.PaymentMethod __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+			return JNIEnv.ToLocalJniHandle (__this.PaymentMethodType);
+		}
+#pragma warning restore 0169
+
+		static IntPtr id_getType;
+		public virtual unsafe global::Com.Coinbase.Api.Entity.PaymentMethod.Type PaymentMethodType {
+			// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='PaymentMethod']/method[@name='getType' and count(parameter)=0]"
+			[Register ("getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;", "GetGetPaymentMethodTypeHandler")]
+			get {
+				if (id_getType == IntPtr.Zero)
+					id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;");
+				try {
+
+					if (GetType () == ThresholdType)
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
+					else
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;")), JniHandleOwnership.TransferLocalRef);
+				} finally {
+				}
+			}
+		}
+
 		static Delegate cb_canBuy;
 #pragma warning disable 0169
 		static Delegate GetCanBuyHandler ()
@@ -558,39 +592,6 @@ namespace Com.Coinbase.Api.Entity {
 					return global::Java.Lang.Object.GetObject<global::Java.Lang.Boolean> (JNIEnv.CallObjectMethod  (Handle, id_canSell), JniHandleOwnership.TransferLocalRef);
 				else
 					return global::Java.Lang.Object.GetObject<global::Java.Lang.Boolean> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "canSell", "()Ljava/lang/Boolean;")), JniHandleOwnership.TransferLocalRef);
-			} finally {
-			}
-		}
-
-		static Delegate cb_getType;
-#pragma warning disable 0169
-		static Delegate GetGetTypeHandler ()
-		{
-			if (cb_getType == null)
-				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetType);
-			return cb_getType;
-		}
-
-		static IntPtr n_GetType (IntPtr jnienv, IntPtr native__this)
-		{
-			global::Com.Coinbase.Api.Entity.PaymentMethod __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-			return JNIEnv.ToLocalJniHandle (__this.GetType ());
-		}
-#pragma warning restore 0169
-
-		static IntPtr id_getType;
-		// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='PaymentMethod']/method[@name='getType' and count(parameter)=0]"
-		[Register ("getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;", "GetGetTypeHandler")]
-		public virtual unsafe global::Com.Coinbase.Api.Entity.PaymentMethod.Type GetType ()
-		{
-			if (id_getType == IntPtr.Zero)
-				id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;");
-			try {
-
-				if (GetType () == ThresholdType)
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
-				else
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.PaymentMethod.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/PaymentMethod$Type;")), JniHandleOwnership.TransferLocalRef);
 			} finally {
 			}
 		}

@@ -7,8 +7,13 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
-<!--Example renaming managed type:
+  <!--Example renaming managed type:
   <attr path="/api/package[@name='org.achartengine.renderer']/class[@name='XYSeriesRenderer.FillOutsideLine.Type']" name="managedName">FillOutsideLineBehaviorType</attr>-->
-  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Account']/constructor[@name='Account' and count(parameter)=0]" name="managedName">AccountType</attr>
-  
+  <!--<attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Account']/constructor[@name='Account' and count(parameter)=0]" name="managedName">AccountType</attr>-->
+  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Account']/method[@name='getType' and count(parameter)=0]" name="managedName">GetAcountType</attr>
+  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Button']/method[@name='getType' and count(parameter)=0]" name="managedName">GetButtonType</attr>
+  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='PaymentMethod']/method[@name='getType' and count(parameter)=0]" name="managedName">GetPaymentMethodType</attr>
+  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Report']/method[@name='getType' and count(parameter)=0]" name="managedName">GetReportType</attr>
+  <attr path="/api/package[@name='com.coinbase.api.entity']/class[@name='Transfer']/method[@name='getType' and count(parameter)=0]" name="managedName">GetTransferType</attr>
+
 </metadata>

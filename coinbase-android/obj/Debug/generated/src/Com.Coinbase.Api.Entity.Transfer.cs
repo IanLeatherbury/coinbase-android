@@ -498,6 +498,40 @@ namespace Com.Coinbase.Api.Entity {
 			}
 		}
 
+		static Delegate cb_getType;
+#pragma warning disable 0169
+		static Delegate GetGetTransferTypeHandler ()
+		{
+			if (cb_getType == null)
+				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetTransferType);
+			return cb_getType;
+		}
+
+		static IntPtr n_GetTransferType (IntPtr jnienv, IntPtr native__this)
+		{
+			global::Com.Coinbase.Api.Entity.Transfer __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
+			return JNIEnv.ToLocalJniHandle (__this.TransferType);
+		}
+#pragma warning restore 0169
+
+		static IntPtr id_getType;
+		public virtual unsafe global::Com.Coinbase.Api.Entity.Transfer.Type TransferType {
+			// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Transfer']/method[@name='getType' and count(parameter)=0]"
+			[Register ("getType", "()Lcom/coinbase/api/entity/Transfer$Type;", "GetGetTransferTypeHandler")]
+			get {
+				if (id_getType == IntPtr.Zero)
+					id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Transfer$Type;");
+				try {
+
+					if (GetType () == ThresholdType)
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
+					else
+						return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Transfer$Type;")), JniHandleOwnership.TransferLocalRef);
+				} finally {
+				}
+			}
+		}
+
 		static Delegate cb_getStatus;
 #pragma warning disable 0169
 		static Delegate GetGetStatusHandler ()
@@ -527,39 +561,6 @@ namespace Com.Coinbase.Api.Entity {
 					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Status> (JNIEnv.CallObjectMethod  (Handle, id_getStatus), JniHandleOwnership.TransferLocalRef);
 				else
 					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Status> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getStatus", "()Lcom/coinbase/api/entity/Transfer$Status;")), JniHandleOwnership.TransferLocalRef);
-			} finally {
-			}
-		}
-
-		static Delegate cb_getType;
-#pragma warning disable 0169
-		static Delegate GetGetTypeHandler ()
-		{
-			if (cb_getType == null)
-				cb_getType = JNINativeWrapper.CreateDelegate ((Func<IntPtr, IntPtr, IntPtr>) n_GetType);
-			return cb_getType;
-		}
-
-		static IntPtr n_GetType (IntPtr jnienv, IntPtr native__this)
-		{
-			global::Com.Coinbase.Api.Entity.Transfer __this = global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer> (jnienv, native__this, JniHandleOwnership.DoNotTransfer);
-			return JNIEnv.ToLocalJniHandle (__this.GetType ());
-		}
-#pragma warning restore 0169
-
-		static IntPtr id_getType;
-		// Metadata.xml XPath method reference: path="/api/package[@name='com.coinbase.api.entity']/class[@name='Transfer']/method[@name='getType' and count(parameter)=0]"
-		[Register ("getType", "()Lcom/coinbase/api/entity/Transfer$Type;", "GetGetTypeHandler")]
-		public virtual unsafe global::Com.Coinbase.Api.Entity.Transfer.Type GetType ()
-		{
-			if (id_getType == IntPtr.Zero)
-				id_getType = JNIEnv.GetMethodID (class_ref, "getType", "()Lcom/coinbase/api/entity/Transfer$Type;");
-			try {
-
-				if (GetType () == ThresholdType)
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Type> (JNIEnv.CallObjectMethod  (Handle, id_getType), JniHandleOwnership.TransferLocalRef);
-				else
-					return global::Java.Lang.Object.GetObject<global::Com.Coinbase.Api.Entity.Transfer.Type> (JNIEnv.CallNonvirtualObjectMethod  (Handle, ThresholdClass, JNIEnv.GetMethodID (ThresholdClass, "getType", "()Lcom/coinbase/api/entity/Transfer$Type;")), JniHandleOwnership.TransferLocalRef);
 			} finally {
 			}
 		}
